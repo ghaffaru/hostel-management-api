@@ -31,3 +31,45 @@ exports.add = (req, res, next) => {
       }
     });
 };
+
+exports.update = (req, res, next) => {
+  const _id = req.params.room_id;
+  Room.findById(_id)
+    .exec()
+    .then(room => {
+      const data = {
+        roomNumber: req.body.room_number
+          ? req.body.room_number
+          : room.roomNumber,
+        furniture: req.body.furniture ? req.body.furniture : room.furniture,
+        capacity: req.body.capacity ? req.body.capacity : room.capacity,
+        price: req.body.price ? req.body.price : room.price
+      };
+      Room.updateOne(
+        { _id: _id },
+        {
+          $set: {
+            roomNumber: data.roomNumber,
+            furniture: data.furniture,
+            capacity: data.capacity,
+            price: data.price
+          }
+        }
+      )
+        .exec()
+        .then(result => {
+          res.status(200).json({
+            message: "Room Updated",
+            room: result
+          });
+        })
+        .catch(err => {
+          res.status(500).json(err);
+        });
+    })
+    .catch(err => {
+      res.status(404).json({
+        error: err
+      });
+    });
+};
