@@ -1,5 +1,7 @@
 const Room = require("../models/Room");
 
+const Student = require("../models/Student");
+
 exports.add = (req, res, next) => {
   Room.find({
     roomNumber: req.body.room_number
@@ -92,8 +94,18 @@ exports.show = (req, res, next) => {
   Room.findById({ _id: req.params.room_id })
     .exec()
     .then(room => {
-        res.status(200).json({
-            room: room
-        })
+      Student.find({ room: room._id, exit: false })
+        .exec()
+        .then(docs => {
+          const numOfStudents = docs.length;
+          room["numOfStudents"] = numOfStudents;
+          res.status(200).json({
+            room: room,
+            numOfStudents: numOfStudents
+          });
+        });
+    })
+    .catch(err => {
+      res.status(500).json(err);
     });
 };
