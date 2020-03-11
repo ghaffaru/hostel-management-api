@@ -73,3 +73,27 @@ exports.update = (req, res, next) => {
       });
     });
 };
+
+exports.index = (req, res, next) => {
+  Room.find()
+    .select("_id roomNumber capacity furniture price")
+    .exec()
+    .then(docs => {
+      res.status(200).json({
+        rooms: docs
+      });
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    });
+};
+
+exports.show = (req, res, next) => {
+  Room.findById({ _id: req.params.room_id })
+    .exec()
+    .then(room => {
+        res.status(200).json({
+            room: room
+        })
+    });
+};
