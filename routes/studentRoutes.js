@@ -4,6 +4,8 @@ const router = express.Router();
 
 const userController = require('../controllers/studentController')
 
-router.post('/register', userController.register)
+const auth = require('../middleware/auth');
+
+router.post('/register', auth,  userController.register)
 
 module.exports = router;
