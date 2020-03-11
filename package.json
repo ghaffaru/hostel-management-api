@@ -1,0 +1,11 @@
+{
+  "name": "hostel-management-api",
+  "version": "1.0.0",
+  "description": "API endpoints to management hostel activities",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ghaff",
+  "license": "MIT"
+}
