@@ -3,13 +3,14 @@ const express = require("express");
 const studentRoutes = require("./routes/studentRoutes");
 
 require("dotenv").config();
+require("./database/connect");
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/student', studentRoutes);
+app.use("/student", studentRoutes);
 app.get("/", (req, res, next) => {
   res.json({
     message: "hello"
