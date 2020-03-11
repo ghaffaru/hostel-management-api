@@ -2,8 +2,7 @@ const Admin = require("../models/Admin");
 
 const bcrypt = require("bcrypt");
 
-const jwt = require('jsonwebtoken')
-
+const jwt = require("jsonwebtoken");
 
 exports.register = (req, res, next) => {
   bcrypt.hash(req.body.password, 10, (err, hash) => {
@@ -39,15 +38,22 @@ exports.login = (req, res, next) => {
           if (err) {
             return res.status(422).json({ error: "Credentials do not match" });
           } else if (result) {
-            
+            const token = jwt.sign(
+              {
+                _id: docs[0]._id,
+                email: docs[0].email
+              },
+              process.env.JWT_KEY,
+              {
+                expiresIn: "1h"
+              }
+            );
             res.status(200).json({
-              message: "Auth succeeded"
+              message: "Auth succeeded",
+              token: token
             });
           }
         });
-        // res.status(200).json({
-        //   message: "Found"
-        // });
       } else {
         res.status(404).json({
           error: "Credentials do not match"
