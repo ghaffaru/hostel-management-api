@@ -7,6 +7,7 @@ module.exports = (req, res, next) => {
     const decoded = jwt.verify(token, process.env.JWT_KEY);
 
     res.adminData = decoded;
+    next();
   } catch (err) {
     res.status(403).json({
       message: "Unauthenticated"

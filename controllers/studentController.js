@@ -1,10 +1,11 @@
 const Student = require("../models/Student");
 
-const auth = require('../middleware/auth');
+
 exports.register = function(req, res, next) {
   const student = new Student({
     first_name: req.body.first_name,
     last_name: req.body.last_name
+    
   });
 
   student.save().then(result => {
@@ -12,5 +13,7 @@ exports.register = function(req, res, next) {
       message: "Student Registered",
       student: result
     });
-  });
+  }).catch(err => {
+      res.status(422).json(err)
+  })
 };
