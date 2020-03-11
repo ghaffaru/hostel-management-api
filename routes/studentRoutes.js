@@ -2,10 +2,12 @@ const express = require("express");
 
 const router = express.Router();
 
-const userController = require('../controllers/studentController')
+const studentController = require("../controllers/studentController");
 
-const auth = require('../middleware/auth');
+const auth = require("../middleware/auth");
 
-router.post('/student/register', auth,  userController.register)
+router.post("/student/register", auth, studentController.register);
+
+router.put("/student/:student_id/update", auth, studentController.update);
 
 module.exports = router;

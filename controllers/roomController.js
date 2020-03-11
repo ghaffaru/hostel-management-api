@@ -91,7 +91,7 @@ exports.index = (req, res, next) => {
 };
 
 exports.show = (req, res, next) => {
-  Room.findById({ _id: req.params.room_id })
+  Room.findById({ _id: req.params.room_id }).select('_id roomNumber capacity furniture price')
     .exec()
     .then(room => {
       Student.find({ room: room._id, exit: false })
