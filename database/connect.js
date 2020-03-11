@@ -5,4 +5,4 @@ mongoose.connect('mongodb://' + process.env.DB_HOST + ':' + process.env.DB_PORT 
     useUnifiedTopology: true
 })
 
-mongoose.Promise = global.Promise
+mongoose.Promise = global.Promise;

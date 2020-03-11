@@ -5,10 +5,31 @@ const studentSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    middle_name: {
+        type: String,
+        required: false
+    },
     last_name: {
         type: String,
-        require: true
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    dateOfBirth: {
+        type: Date,
+        required: true
+    },
+    year: {
+        type: Number,
+        required: true
     }
+
 })
 
 module.exports = mongoose.model('Student', studentSchema)
