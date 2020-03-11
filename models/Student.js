@@ -24,6 +24,15 @@ const studentSchema = mongoose.Schema({
     year: {
         type: Number,
         required: true
+    },
+    room: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Room',
+        required: true
+    },
+    exit: {
+        type: Boolean,
+        default: false
     }
 
 })

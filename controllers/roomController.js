@@ -1,0 +1,33 @@
+const Room = require("../models/Room");
+
+exports.add = (req, res, next) => {
+  Room.find({
+    roomNumber: req.body.room_number
+  })
+    .exec()
+    .then(docs => {
+      if (docs.length > 0) {
+        res.status(422).json({
+          error: "Room already added"
+        });
+      } else {
+        const room = new Room({
+          roomNumber: req.body.room_number,
+          capacity: req.body.capacity,
+          furniture: req.body.furniture,
+          price: req.body.price
+        });
+
+        room
+          .save()
+          .then(result => {
+            res.status(200).json({
+              message: "Room Added"
+            });
+          })
+          .catch(err => {
+            res.status(422).json(err);
+          });
+      }
+    });
+};

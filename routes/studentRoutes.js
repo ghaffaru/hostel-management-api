@@ -6,6 +6,6 @@ const userController = require('../controllers/studentController')
 
 const auth = require('../middleware/auth');
 
-router.post('/register', auth,  userController.register)
+router.post('/student/register', auth,  userController.register)
 
 module.exports = router;

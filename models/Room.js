@@ -11,8 +11,13 @@ const roomSchema = mongoose.Schema({
         type: Number,
         required: true
     },
+
     furniture: {
-        type: Array,
+        type: JSON,
+        required: true
+    },
+    price: {
+        type: Number,
         required: true
     }
 })
