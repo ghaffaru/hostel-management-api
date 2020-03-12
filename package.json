@@ -4,7 +4,8 @@
   "description": "API endpoints to management hostel activities",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index"
   },
   "author": "ghaff",
   "license": "MIT",
