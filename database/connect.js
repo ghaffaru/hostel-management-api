@@ -13,18 +13,13 @@ if (process.env.NODE_ENV === "local") {
       useUnifiedTopology: true
     }
   );
-} else if (process.env.NODE_ENV === "production") {
+} else {
   mongoose.connect(
-    "mongodb://" +
-      process.env.DB_USER_PROD +
-      ":" +
-      process.env.DB_PASS_PROD +
-      "@" +
-      process.env.DB_HOST_PROD +
-      ":" +
-      process.env.DB_PORT_PROD +
-      "/" +
-      process.env.DB_NAME_PROD
+    "mongodb://heroku_gh4cwgbm:t3npqta6f4pasc3747dcdlg7c6@ds235243.mlab.com:35243/heroku_gh4cwgbm",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    }
   );
 }
 
