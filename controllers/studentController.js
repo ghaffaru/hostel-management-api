@@ -1,5 +1,16 @@
 const Student = require("../models/Student");
 
+exports.index = function(req, res, next) {
+  Student.find()
+    .exec()
+    .then(result => {
+      res.status(200).json(result);
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    });
+};
+
 exports.register = function(req, res, next) {
   Student.find({ email: req.body.email, year: req.body.year })
     .exec()
@@ -17,7 +28,8 @@ exports.register = function(req, res, next) {
           phone: req.body.phone,
           dateOfBirth: Date.parse(req.body.date_of_birth),
           year: req.body.year,
-          room: req.body.room
+          room: req.body.room,
+          amount: req.body.amount
         });
 
         student
@@ -61,7 +73,8 @@ exports.update = (req, res, next) => {
               : student.dateOfBirth,
             year: req.body.year ? req.body.year : student.year,
             room: req.body.room ? req.body.room : student.room,
-            exit: req.body.exit ? req.body.exit : student.exit
+            exit: req.body.exit ? req.body.exit : student.exit,
+            amount: req.body.amount ? req.body.amount : student.amount
           }
         }
       )

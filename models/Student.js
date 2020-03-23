@@ -37,6 +37,10 @@ const studentSchema = mongoose.Schema({
   exit: {
     type: Boolean,
     default: false
+  },
+  amount: {
+    type: Number,
+    required: true
   }
 });
 
