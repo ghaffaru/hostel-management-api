@@ -27,7 +27,7 @@ exports.register = function(req, res, next) {
           middle_name: req.body.middlename,
           email: req.body.email,
           phone: req.body.phone,
-          dateOfBirth: Date.parse(req.body.date_of_birth),
+          dateOfBirth: req.body.date_of_birth,
           year: req.body.year,
           room: req.body.room,
           amount: req.body.amount
