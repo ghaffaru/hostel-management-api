@@ -2,6 +2,7 @@ const Student = require("../models/Student");
 
 exports.index = function(req, res, next) {
   Student.find()
+    .populate('room', '_id roomNumber capacity furniture price')
     .exec()
     .then(result => {
       res.status(200).json(result);
