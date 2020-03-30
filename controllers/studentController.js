@@ -13,7 +13,7 @@ exports.index = function(req, res, next) {
 };
 
 exports.register = function(req, res, next) {
-  console.log(req.file)
+  console.log(req.file);
   Student.find({ email: req.body.email, year: req.body.year })
     .exec()
     .then(docs => {
@@ -78,7 +78,9 @@ exports.update = (req, res, next) => {
             year: req.body.year ? req.body.year : student.year,
             room: req.body.room ? req.body.room : student.room,
             exit: req.body.exit ? req.body.exit : student.exit,
-            amount: req.body.amount ? req.body.amount : student.amount
+            amount: req.body.amount ? req.body.amount : student.amount,
+            program: req.body.program ? req.body.program : student.program,
+            level: req.body.level ? req.body.level : student.level
           }
         }
       )

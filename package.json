@@ -4,16 +4,19 @@
   "description": "API endpoints to management hostel activities",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "start": "nodemon index"
   },
   "author": "ghaff",
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^4.0.1",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
+    "mocha": "^7.1.1",
     "mongoose": "^5.9.4",
     "multer": "^1.4.2"
   },

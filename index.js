@@ -28,3 +28,6 @@ app.get("/", (req, res, next) => {
 const port = process.env.NODE_ENV == "local" ? 5000 : process.env.PORT;
 
 app.listen(port, () => {});
+
+
+module.exports = app; // export for testing
