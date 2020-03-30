@@ -13,6 +13,7 @@ exports.index = function(req, res, next) {
 };
 
 exports.register = function(req, res, next) {
+  console.log(req.file)
   Student.find({ email: req.body.email, year: req.body.year })
     .exec()
     .then(docs => {
