@@ -2,7 +2,7 @@ const Student = require("../models/Student");
 
 exports.index = function(req, res, next) {
   Student.find()
-    .populate('room', '_id roomNumber capacity furniture price')
+    .populate("room", "_id roomNumber capacity furniture price")
     .exec()
     .then(result => {
       res.status(200).json(result);
@@ -30,7 +30,9 @@ exports.register = function(req, res, next) {
           dateOfBirth: req.body.date_of_birth,
           year: req.body.year,
           room: req.body.room,
-          amount: req.body.amount
+          amount: req.body.amount,
+          program: req.body.program,
+          level: req.body.level
         });
 
         student

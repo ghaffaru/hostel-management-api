@@ -41,6 +41,14 @@ const studentSchema = mongoose.Schema({
   amount: {
     type: Number,
     required: true
+  },
+  program: {
+    type: String,
+    required: true
+  },
+  level: {
+    type: Number,
+    required: true
   }
 });
 
